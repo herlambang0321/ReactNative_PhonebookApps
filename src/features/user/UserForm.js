@@ -52,61 +52,45 @@ export default function UserForm(props) {
         // <div>
         <View style={{}}>
             {/* <div className="card-header"> */}
-            <Text>{props.fontlabel || 'Adding Form'}</Text>
+            <Text style={styles.title}>{props.fontlabel || 'Adding Form :'}</Text>
             {/* </View> */}
-            <View style={{ display: "flex", width: "100%", flexDirection: "column", alignContent: "flex-start" }} onPress={props.fontlabel ? handleSearch : handleSubmit}>
+            <View style={{ display: "flex", width: "100%", flexDirection: "column", alignContent: "flex-start" }}>
                 <TextInput
-                    style={{ height: 40 }}
+                    style={{ height: 40, borderWidth: 1, margin: 20, marginVertical: 2, borderRadius: 5 }}
                     placeholder="name"
                     onChangeText={name => setUser({ ...user, name })}
                     defaultValue={user.name}
                 />
 
                 <TextInput
-                    style={{ height: 40 }}
+                    style={{ height: 40, borderWidth: 1, margin: 20, marginVertical: 2, borderRadius: 5 }}
                     placeholder="phone"
                     onChangeText={phone => setUser({ ...user, phone })}
                     defaultValue={user.phone}
                 />
-
-                {/* <div className="d-flex justify-content me-5">
-                <div className="d-flex align-items-center">
-                    <label htmlFor="name">Name</label>
-                </div>
-                <div className="d-flex col-sm-2">
-                    <input type="text" className="form-control" id="name" name="name" placeholder="name"
-                        onChange={handleInputChange} value={user.name} />
-                </div>
-                <div className="d-flex align-items-center">
-                    <label htmlFor="phone">Phone</label>
-                </div>
-                <div className="d-flex col-sm-2">
-                    <input type="text" className="form-control" id="phone" name="phone" placeholder="phone"
-                        onChange={handleInputChange} value={user.phone} />
-                </div> */}
-                {
-                    props.submitLabel ?
-                        <TouchableOpacity style={styles.submit}>
+                {/* {
+                    props.submitLabel ? */}
+                {/* <TouchableOpacity style={styles.submit}>
                             <Text style={styles.labelButton}>
                                 <View>
                                     <FontAwesomeIcon style={styles.icons} icon={faMagnifyingGlass} />
                                 </View> {props.submitLabel || ' save'}
                             </Text>
-                        </TouchableOpacity>
-                        :
-                        <TouchableOpacity style={styles.submit} onPress={handleSubmit}>
-                            <Text style={styles.labelButton}>
-                                <View>
-                                    <FontAwesomeIcon style={styles.icons} icon={faCircleCheck} />
-                                </View> {props.submitLabel || ' save'}
-                            </Text>
-                        </TouchableOpacity>
-                }
+                        </TouchableOpacity> */}
+                {/* : */}
+                <TouchableOpacity style={styles.submit} onPress={handleSubmit}>
+                    <Text style={styles.labelButton}>
+                        <View>
+                            <FontAwesomeIcon style={styles.icons} icon={faCircleCheck} />
+                        </View> {props.submitLabel || ' save'}
+                    </Text>
+                </TouchableOpacity>
+                {/* } */}
                 <TouchableOpacity style={styles.submit} onPress={handleCancel}>
                     <Text style={styles.labelButton}>
                         <View>
-                            <FontAwesomeIcon style={styles.icons} icon={props.submitLabel ? faRotateLeft : faBan} />
-                        </View> {props.submitLabel ? ' reset' : ' cancel'}
+                            <FontAwesomeIcon style={styles.icons} icon={faBan} />
+                        </View> cancel
                     </Text>
                 </TouchableOpacity>
 
@@ -131,6 +115,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
+    },
+    title: {
+        textAlign: "center",
+        marginVertical: 5,
+        fontSize: 20,
+        fontWeight: 'bold',
+        backgroundColor: "#9ca3af",
+        borderStyle: "solid",
+        borderColor: "white",
+        borderWidth: 1,
+        borderRadius: 5
     },
     submit: {
         width: "100%",

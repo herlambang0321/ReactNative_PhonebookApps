@@ -58,11 +58,9 @@ export default function UserItem(props) {
 
             {/* {edit.isEdit ? */}
             <TextInput
-                // style={{ height: 40 }}
+                style={{ flex: 0.4, flexGrow: 2, alignContent: "space-between" }}
                 name="name"
-                // value={user.name}
                 onChangeText={name => setUser({ ...user, name })}
-                maxLength={30} required
                 defaultValue={user.name}
             />
             {/* :
@@ -71,11 +69,9 @@ export default function UserItem(props) {
 
             {/* {edit.isEdit ? */}
             <TextInput
-                // style={{ height: 40 }}
+                style={{ flex: 0.4, flexGrow: 2, alignContent: "space-between" }}
                 name="phone"
-                // value={user.phone}
                 onChangeText={phone => setUser({ ...user, phone })}
-                maxLength={30} required
                 defaultValue={user.phone}
             />
             {/* :
@@ -127,14 +123,23 @@ export default function UserItem(props) {
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: '#0ea5e9',
-        // borderRadius: 5,
-        width: 300,
+        // backgroundColor: 'white',
+        // borderWidth: 2,
+        // borderColor: '#636e72',
+        // borderRadius: 10,
+        // paddingBottom: 5,
+        // paddingHorizontal: 0,
+        // width: '100%',
+        // marginVertical: 10
+
+        margin: -20,
+        paddingHorizontal: 0,
+        marginVertical: 2,
         height: 50,
-        display: "flex",
-        // paddingLeft: 100,
-        // paddingRight: 100,
+        borderWidth: 3,
+        borderRadius: 5,
         flexDirection: "row",
+        backgroundColor: "#f1f5f9",
         justifyContent: "space-between",
         alignItems: "center"
     },
