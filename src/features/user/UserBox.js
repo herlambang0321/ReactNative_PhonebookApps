@@ -45,8 +45,7 @@ export default function UserBox(props) {
         <View style={styles.container}>
             <View>
                 <Text style={styles.title}>
-                    <FontAwesomeIcon icon={faAddressBook} />
-                    Phone Book Apps
+                    <FontAwesomeIcon style={{}} icon={faAddressBook} />  Phone Book Apps
                 </Text>
             </View>
             <View style={{}}>
@@ -64,7 +63,7 @@ export default function UserBox(props) {
                 }
                 {
                     search.showSearch ?
-                        <UserForm cancel={hiddenSearchUser} />
+                        <UserForm cancelSeacrh={hiddenSearchUser} submitLabel=" search" fontlabel="Search Form :" />
                         :
                         <TouchableOpacity style={styles.search} onPress={() => showSearchUser()}>
                             <Text style={styles.labelButton}>
@@ -90,13 +89,17 @@ export default function UserBox(props) {
 const styles = StyleSheet.create({
     container: {
         display: "flex",
-        padding: 20,
+        backgroundColor: '#DCDCDC',
+        padding: 15,
+        height: "100%"
     },
     title: {
         padding: 10,
         textAlign: "center",
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '900',
+        fontStyle: 'italic',
+        textDecorationLine: 'underline',
         backgroundColor: "#9ca3af",
         borderStyle: "solid",
         borderColor: "white",
@@ -105,18 +108,20 @@ const styles = StyleSheet.create({
     },
     add: {
         marginVertical: 5,
+        marginRight: "auto",
         padding: 5,
         display: "flex",
-        backgroundColor: "#3b82f6",
+        backgroundColor: "#0d6efd",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
         borderRadius: 5
     },
     search: {
+        marginRight: "auto",
         padding: 5,
         display: "flex",
-        backgroundColor: "#3b82f6",
+        backgroundColor: "#0dcaf0",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
@@ -129,7 +134,6 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     icons: {
-        
         color: '#ffffff'
     }
 });

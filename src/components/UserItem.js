@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons/faCircleCheck'
 import { faPencil } from '@fortawesome/free-solid-svg-icons/faPencil'
@@ -54,68 +54,76 @@ export default function UserItem(props) {
 
     return (
         <View style={styles.container}>
-            <Text>{props.no}</Text>
-
-            {/* {edit.isEdit ? */}
-            <TextInput
-                style={{ flex: 0.4, flexGrow: 2, alignContent: "space-between" }}
-                name="name"
-                onChangeText={name => setUser({ ...user, name })}
-                defaultValue={user.name}
-            />
-            {/* :
-            user.name */}
-            {/* } */}
-
-            {/* {edit.isEdit ? */}
-            <TextInput
-                style={{ flex: 0.4, flexGrow: 2, alignContent: "space-between" }}
-                name="phone"
-                onChangeText={phone => setUser({ ...user, phone })}
-                defaultValue={user.phone}
-            />
-            {/* :
-            user.phone */}
-            {/* } */}
-
-            {/* {props.sent ?
-                edit.isEdit ? */}
-            {/* <TouchableOpacity style="btn btn-primary" onPress={saveEdit}>
-                            <View>
-                                <FontAwesomeIcon icon={faCircleCheck} />
-                            </View> save
-                        </TouchableOpacity>
-                        <TouchableOpacity style='btn btn-warning' onPress={handleCancel}>
-                            <View>
-                                <FontAwesomeIcon icon={faBan} />
-                            </View> cancel
-                        </TouchableOpacity> */}
-
-            {/* : */}
-
-            <TouchableOpacity style={styles.update} onPress={handleEdit}>
-                <Text style={styles.labelButton}>
-                    <View>
-                        <FontAwesomeIcon style={styles.icons} icon={faPencil} />
-                    </View> edit
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.remove} onPress={props.remove}>
-                <Text style={styles.labelButton}>
-                    <View>
-                        <FontAwesomeIcon style={styles.icons} icon={faTrashCan} />
-                    </View> delete
-                </Text>
-            </TouchableOpacity>
-
-            {/* :
-
+            <Text style={{ margin: 2 }}>{props.no}</Text>
+            {
+                edit.isEdit ?
+                    <View style={{ flex: 1 }}>
+                        <TextInput
+                            style={{ flex: 1, margin: 2, padding: 2 }}
+                            onChangeText={name => setUser({ ...user, name })}
+                            defaultValue={user.name}
+                        />
+                        <TextInput
+                            style={{ flex: 1, margin: 2, padding: 2 }}
+                            onChangeText={phone => setUser({ ...user, phone })}
+                            defaultValue={user.phone}
+                        />
+                    </View>
+                    :
+                    <View style={{ flex: 1, margin: 2, padding: 2 }}>
+                        <Text>
+                            {user.name}
+                        </Text>
+                        <Text>
+                            {user.phone}
+                        </Text>
+                    </View>
+            }
+            {
+                props.sent ?
+                    edit.isEdit ?
+                        <Fragment>
+                            <TouchableOpacity style={styles.submitSave} onPress={saveEdit}>
+                                <Text style={styles.labelButton}>
+                                    <View>
+                                        <FontAwesomeIcon style={styles.icons} icon={faCircleCheck} />
+                                    </View> save
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.submitCancel} onPress={handleCancel}>
+                                <Text style={styles.labelButton}>
+                                    <View>
+                                        <FontAwesomeIcon style={[styles.icons, { transform: [{ rotate: '90deg' }] }]} icon={faBan} />
+                                    </View> cancel
+                                </Text>
+                            </TouchableOpacity>
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <TouchableOpacity style={styles.update} onPress={handleEdit}>
+                                <Text style={styles.labelButton}>
+                                    <View>
+                                        <FontAwesomeIcon style={styles.icons} icon={faPencil} />
+                                    </View> edit
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.remove} onPress={props.remove}>
+                                <Text style={styles.labelButton}>
+                                    <View>
+                                        <FontAwesomeIcon style={styles.icons} icon={faTrashCan} />
+                                    </View> delete
+                                </Text>
+                            </TouchableOpacity>
+                        </Fragment>
+                    :
                     <TouchableOpacity style={styles.resend} onPress={props.resend}>
-                        <View>
-                            <FontAwesomeIcon icon={faRepeat} />
-                        </View> resend
-                    </TouchableOpacity>  */}
-            {/* } */}
+                        <Text style={styles.labelButton}>
+                            <View>
+                                <FontAwesomeIcon style={styles.icons} icon={faRepeat} />
+                            </View> resend
+                        </Text>
+                    </TouchableOpacity>
+            }
         </View >
     )
 
@@ -123,30 +131,43 @@ export default function UserItem(props) {
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: 'white',
-        // borderWidth: 2,
-        // borderColor: '#636e72',
-        // borderRadius: 10,
-        // paddingBottom: 5,
-        // paddingHorizontal: 0,
-        // width: '100%',
-        // marginVertical: 10
-
+        elevation: 5,
         margin: -20,
         paddingHorizontal: 0,
         marginVertical: 2,
         height: 50,
         borderWidth: 3,
-        borderRadius: 5,
+        borderRadius: 10,
         flexDirection: "row",
         backgroundColor: "#f1f5f9",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        borderLeftWidth: 1,
+        borderRightWidth: 3,
+        borderTopWidth: 1
+    },
+    submitSave: {
+        height: 40,
+        padding: 8,
+        backgroundColor: "#0d6efd",
+        borderStyle: "solid",
+        borderColor: "white",
+        borderWidth: 1,
+        borderRadius: 5
+    },
+    submitCancel: {
+        height: 40,
+        padding: 8,
+        backgroundColor: "#ffc107",
+        borderStyle: "solid",
+        borderColor: "white",
+        borderWidth: 1,
+        borderRadius: 5
     },
     update: {
         height: 40,
         padding: 8,
-        backgroundColor: "#22c55e",
+        backgroundColor: "#198754",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
@@ -155,7 +176,7 @@ const styles = StyleSheet.create({
     remove: {
         height: 40,
         padding: 8,
-        backgroundColor: "#ef4444",
+        backgroundColor: "#dc3545",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
@@ -163,8 +184,8 @@ const styles = StyleSheet.create({
     },
     resend: {
         height: 40,
-        width: 75,
-        backgroundColor: "#eab308",
+        padding: 8,
+        backgroundColor: "#ffc107",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
