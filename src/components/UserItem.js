@@ -22,17 +22,6 @@ export default function UserItem(props) {
         isEdit: false
     });
 
-    // const handleInputChange = (event) => {
-    //     const target = event.target;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     const name = target.name;
-
-    //     setUser({
-    //         ...user,
-    //         [name]: value
-    //     });
-    // }
-
     const handleEdit = () => {
         setEdit({
             isEdit: true
@@ -124,7 +113,7 @@ export default function UserItem(props) {
                         </Text>
                     </TouchableOpacity>
             }
-        </View >
+        </View>
     )
 
 }

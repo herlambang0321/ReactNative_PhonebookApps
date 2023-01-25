@@ -73,15 +73,9 @@ export default function UserBox(props) {
                             </Text>
                         </TouchableOpacity>
                 }
-            </View >
-            {/* <View>
-                <UserForm
-                    submitLabel=" search"
-                    fontlabel="Search Form"
-                />
-            </View> */}
+            </View>
             <UserList />
-        </View >
+        </View>
     )
 
 }

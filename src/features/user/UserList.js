@@ -27,7 +27,7 @@ export default function UserList(props) {
     //         dispatch(loadmoreUser())
     //     }
     // }
-    console.log('users', users);
+
     return (
         <View style={{ display: "flex", padding: 20 }}>
             {users.map((user, index) => {

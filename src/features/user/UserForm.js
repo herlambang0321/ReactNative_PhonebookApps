@@ -42,7 +42,7 @@ export default function UserForm(props) {
     return (
         <View style={{}}>
             <View>
-                <Text style={styles.title}><FontAwesomeIcon icon={props.fontlabel ? faUserCheck : faUserPlus} />  {props.fontlabel || 'Adding Form :'}</Text>
+                <Text style={styles.title}><FontAwesomeIcon icon={props.fontlabel ? faUserCheck : faUserPlus} /> {props.fontlabel || 'Adding Form :'}</Text>
             </View>
             <View style={{ display: "flex", width: "100%", flexDirection: "column", alignContent: "flex-start" }} onPress={props.fontlabel ? handleSearch : handleSubmit}>
                 <TextInput
@@ -94,9 +94,8 @@ export default function UserForm(props) {
                         </Text>
                     </TouchableOpacity>
                 }
-
             </View>
-        </View >
+        </View>
     )
 
 }
