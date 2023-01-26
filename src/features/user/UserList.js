@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 import UserItem from "../../components/UserItem"
 
@@ -8,7 +8,7 @@ import {
     selectUser,
     removeUserAsync,
     addUserAsync,
-    // loadmoreUser,
+    loadmoreUser,
 } from './userSlice';
 
 export default function UserList(props) {
@@ -21,27 +21,24 @@ export default function UserList(props) {
         dispatch(loadUserAsync())
     }, [dispatch]);
 
-    // const scrolled = (event) => {
-    //     var element = event.target;
-    //     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-    //         dispatch(loadmoreUser())
-    //     }
-    // }
-
     return (
-        <View style={{ display: "flex", padding: 20 }}>
-            {users.map((user, index) => {
-                return (
+        <View style={{ display: "flex", width: "100%" }}>
+            <FlatList
+                data={users}
+                renderItem={({ item, index }) => (
                     <UserItem
-                        key={user.id}
+                        key={item.id}
                         no={index + 1}
-                        user={user}
-                        sent={user.sent}
-                        remove={() => dispatch(removeUserAsync(user.id))}
-                        resend={() => dispatch(addUserAsync({ id: user.id, name: user.name, phone: user.phone }))}
+                        user={item}
+                        remove={() => dispatch(removeUserAsync(item.id))}
+                        resend={() => dispatch(addUserAsync({ id: item.id, name: item.name, phone: item.phone }))}
                     />
-                )
-            })}
+                )}
+                keyExtractor={(item) => item.id}
+                onEndReached={() => dispatch(loadmoreUser())}
+                onEndReachedThreshold={0.5}
+                style={{ maxHeight: 200 }}
+            />
         </View>
     )
 

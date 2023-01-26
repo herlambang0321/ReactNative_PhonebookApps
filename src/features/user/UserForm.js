@@ -33,7 +33,7 @@ export default function UserForm(props) {
     }, [dispatch, user])
 
     const handleCancel = () => {
-        if (!props.fontlabel) {
+        if (!props.fontlabel && !submitLabel) {
             props.cancel()
         }
         setUser({ name: '', phone: '' })
@@ -75,7 +75,6 @@ export default function UserForm(props) {
                                 </View> {props.submitLabel || ' save'}
                             </Text>
                         </TouchableOpacity>
-
                 }
                 <TouchableOpacity style={styles.submitCancel} onPress={handleCancel}>
                     <Text style={styles.labelButton}>

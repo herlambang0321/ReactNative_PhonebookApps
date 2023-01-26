@@ -69,7 +69,7 @@ export default function UserItem(props) {
                     </View>
             }
             {
-                props.sent ?
+                props.user.sent ?
                     edit.isEdit ?
                         <Fragment>
                             <TouchableOpacity style={styles.submitSave} onPress={saveEdit}>
@@ -121,8 +121,7 @@ export default function UserItem(props) {
 const styles = StyleSheet.create({
     container: {
         elevation: 5,
-        margin: -20,
-        paddingHorizontal: 0,
+        paddingHorizontal: 2,
         marginVertical: 2,
         height: 50,
         borderWidth: 3,

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faAddressBook } from '@fortawesome/free-solid-svg-icons/faAddressBook'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass'
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft'
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 
 export default function UserBox(props) {
@@ -41,14 +42,18 @@ export default function UserBox(props) {
         })
     }
 
+    const resetForm = () => {
+        setSearch()
+    }
+
     return (
         <View style={styles.container}>
             <View>
                 <Text style={styles.title}>
-                    <FontAwesomeIcon style={{}} icon={faAddressBook} />  Phone Book Apps
+                    <FontAwesomeIcon icon={faAddressBook} />  Phone Book Apps
                 </Text>
             </View>
-            <View style={{}}>
+            <View>
                 {
                     add.showAdd ?
                         <UserForm cancel={hiddenAddUser} />
@@ -73,6 +78,13 @@ export default function UserBox(props) {
                             </Text>
                         </TouchableOpacity>
                 }
+                <TouchableOpacity style={styles.reset} onPress={resetForm}>
+                    <Text style={styles.labelButton}>
+                        <View>
+                            <FontAwesomeIcon style={styles.icons} icon={faRotateLeft} />
+                        </View>  reset
+                    </Text>
+                </TouchableOpacity>
             </View>
             <UserList />
         </View>
@@ -112,10 +124,32 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     search: {
-        marginRight: "auto",
+        marginLeft: "auto",
         padding: 5,
+        marginBottom: 10,
         display: "flex",
         backgroundColor: "#0dcaf0",
+        borderStyle: "solid",
+        borderColor: "white",
+        borderWidth: 1,
+        borderRadius: 5
+    },
+    reset: {
+        // width: "100%",
+        // padding: 5,
+        // marginVertical: 2,
+        // backgroundColor: "#ffc107",
+        // borderStyle: "solid",
+        // borderColor: "white",
+        // borderWidth: 1,
+        // borderRadius: 5
+
+        marginLeft: 120,
+        marginRight: 120,
+        padding: 5,
+        marginBottom: 5,
+        display: "flex",
+        backgroundColor: "#ffc107",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
