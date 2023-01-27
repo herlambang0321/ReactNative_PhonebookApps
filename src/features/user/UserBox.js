@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faAddressBook } from '@fortawesome/free-solid-svg-icons/faAddressBook'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass'
-import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft'
+// import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft'
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 
 export default function UserBox(props) {
@@ -42,9 +42,9 @@ export default function UserBox(props) {
         })
     }
 
-    const resetForm = () => {
-        setSearch()
-    }
+    // const resetForm = () => {
+    //     setReset()
+    // }
 
     return (
         <View style={styles.container}>
@@ -78,15 +78,23 @@ export default function UserBox(props) {
                             </Text>
                         </TouchableOpacity>
                 }
-                <TouchableOpacity style={styles.reset} onPress={resetForm}>
+                {/* <TouchableOpacity style={styles.reset} onPress={resetForm}>
                     <Text style={styles.labelButton}>
                         <View>
                             <FontAwesomeIcon style={styles.icons} icon={faRotateLeft} />
                         </View>  reset
                     </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
+
+                {/* <UserForm
+                    submitLabel=" search" fontlabel="Search Form"
+                /> */}
+
             </View>
             <UserList />
+            <View style={{flex: 1, width: "100%"}}>
+                <Text style={{ fontStyle: 'italic', fontWeight: '900', textAlign: "center", fontSize: 20, marginVertical: 10 }}>@ Phone Book Apps</Text>
+            </View>
         </View>
     )
 
@@ -94,10 +102,12 @@ export default function UserBox(props) {
 
 const styles = StyleSheet.create({
     container: {
-        display: "flex",
+        // display: "flex",
+        flex: 1,
+        width: "100%",
         backgroundColor: '#DCDCDC',
         padding: 15,
-        height: "100%"
+        // height: "100%"
     },
     title: {
         padding: 10,
@@ -134,27 +144,27 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5
     },
-    reset: {
-        // width: "100%",
-        // padding: 5,
-        // marginVertical: 2,
-        // backgroundColor: "#ffc107",
-        // borderStyle: "solid",
-        // borderColor: "white",
-        // borderWidth: 1,
-        // borderRadius: 5
+    // reset: {
+    //     // width: "100%",
+    //     // padding: 5,
+    //     // marginVertical: 2,
+    //     // backgroundColor: "#ffc107",
+    //     // borderStyle: "solid",
+    //     // borderColor: "white",
+    //     // borderWidth: 1,
+    //     // borderRadius: 5
 
-        marginLeft: 120,
-        marginRight: 120,
-        padding: 5,
-        marginBottom: 5,
-        display: "flex",
-        backgroundColor: "#ffc107",
-        borderStyle: "solid",
-        borderColor: "white",
-        borderWidth: 1,
-        borderRadius: 5
-    },
+    //     marginLeft: 120,
+    //     marginRight: 120,
+    //     padding: 5,
+    //     marginBottom: 5,
+    //     display: "flex",
+    //     backgroundColor: "#ffc107",
+    //     borderStyle: "solid",
+    //     borderColor: "white",
+    //     borderWidth: 1,
+    //     borderRadius: 5
+    // },
     labelButton: {
         fontWeight: "bold",
         textTransform: "uppercase",

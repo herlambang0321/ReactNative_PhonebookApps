@@ -33,7 +33,7 @@ export default function UserForm(props) {
     }, [dispatch, user])
 
     const handleCancel = () => {
-        if (!props.fontlabel && !submitLabel) {
+        if (!props.fontlabel) {
             props.cancel()
         }
         setUser({ name: '', phone: '' })
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     submit: {
         width: "100%",
         padding: 5,
+        marginVertical: 2,
         backgroundColor: "#0b5ed7",
         borderStyle: "solid",
         borderColor: "white",
@@ -124,6 +125,7 @@ const styles = StyleSheet.create({
     submitSearch: {
         width: "100%",
         padding: 5,
+        marginVertical: 2,
         backgroundColor: "#0dcaf0",
         borderStyle: "solid",
         borderColor: "white",
