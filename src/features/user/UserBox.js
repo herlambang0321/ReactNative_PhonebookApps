@@ -5,10 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faAddressBook } from '@fortawesome/free-solid-svg-icons/faAddressBook'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass'
-// import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft'
-import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, View, ImageBackground } from "react-native";
 
 export default function UserBox(props) {
+
+    const image = { uri: 'https://cdn.wallpapersafari.com/18/86/OYuhta.jpg' };
 
     const [add, setAdd] = useState({
         showAdd: false,
@@ -42,72 +43,64 @@ export default function UserBox(props) {
         })
     }
 
-    // const resetForm = () => {
-    //     setReset()
-    // }
-
     return (
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.title}>
-                    <FontAwesomeIcon icon={faAddressBook} />  Phone Book Apps
-                </Text>
-            </View>
-            <View>
-                {
-                    add.showAdd ?
-                        <UserForm cancel={hiddenAddUser} />
-                        :
-                        <TouchableOpacity style={styles.add} onPress={() => showAddUser()}>
-                            <Text style={styles.labelButton}>
-                                <View>
-                                    <FontAwesomeIcon style={styles.icons} icon={faPlus} />
-                                </View> add
-                            </Text>
-                        </TouchableOpacity>
-                }
-                {
-                    search.showSearch ?
-                        <UserForm cancelSeacrh={hiddenSearchUser} submitLabel=" search" fontlabel="Search Form :" />
-                        :
-                        <TouchableOpacity style={styles.search} onPress={() => showSearchUser()}>
-                            <Text style={styles.labelButton}>
-                                <View>
-                                    <FontAwesomeIcon style={styles.icons} icon={faMagnifyingGlass} />
-                                </View> search
-                            </Text>
-                        </TouchableOpacity>
-                }
-                {/* <TouchableOpacity style={styles.reset} onPress={resetForm}>
-                    <Text style={styles.labelButton}>
-                        <View>
-                            <FontAwesomeIcon style={styles.icons} icon={faRotateLeft} />
-                        </View>  reset
+        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+            <View style={styles.container}>
+                <View>
+                    <Text style={styles.title}>
+                        <FontAwesomeIcon icon={faAddressBook} />  Phone Book Apps
                     </Text>
-                </TouchableOpacity> */}
-
-                {/* <UserForm
-                    submitLabel=" search" fontlabel="Search Form"
-                /> */}
-
+                </View>
+                <View>
+                    {
+                        add.showAdd ?
+                            <UserForm cancel={hiddenAddUser} />
+                            :
+                            <TouchableOpacity style={styles.add} onPress={() => showAddUser()}>
+                                <Text style={styles.labelButton}>
+                                    <View>
+                                        <FontAwesomeIcon style={styles.icons} icon={faPlus} />
+                                    </View> add
+                                </Text>
+                            </TouchableOpacity>
+                    }
+                    {
+                        search.showSearch ?
+                            <UserForm cancelSeacrh={hiddenSearchUser} submitLabel=" search" fontlabel="Search Form :" />
+                            :
+                            <TouchableOpacity style={styles.search} onPress={() => showSearchUser()}>
+                                <Text style={styles.labelButton}>
+                                    <View>
+                                        <FontAwesomeIcon style={styles.icons} icon={faMagnifyingGlass} />
+                                    </View> search
+                                </Text>
+                            </TouchableOpacity>
+                    }
+                </View>
+                <View style={{ width: '100%', height: '100%', paddingVertical: 2 }}>
+                    <UserList />
+                </View>
             </View>
-            <UserList />
-            <View style={{flex: 1, width: "100%"}}>
-                <Text style={{ fontStyle: 'italic', fontWeight: '900', textAlign: "center", fontSize: 20, marginVertical: 10 }}>@ Phone Book Apps</Text>
+            <View style={styles.footer}>
+                <Text style={{ fontStyle: 'italic', fontWeight: '900', textAlign: "center", fontSize: 20, marginVertical: 10 }}>© Phone Book Apps</Text>
             </View>
-        </View>
+        </ImageBackground>
     )
 
 }
 
 const styles = StyleSheet.create({
-    container: {
-        // display: "flex",
+    image: {
         flex: 1,
-        width: "100%",
-        backgroundColor: '#DCDCDC',
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
+    },
+    container: {
+        flex: 1,
         padding: 15,
-        // height: "100%"
+        paddingVertical: 10,
+        width: "100%"
     },
     title: {
         padding: 10,
@@ -134,37 +127,16 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     search: {
-        marginLeft: "auto",
-        padding: 5,
-        marginBottom: 10,
         display: "flex",
+        marginLeft: "auto",
+        marginBottom: 10,
+        padding: 5,
         backgroundColor: "#0dcaf0",
         borderStyle: "solid",
         borderColor: "white",
         borderWidth: 1,
         borderRadius: 5
     },
-    // reset: {
-    //     // width: "100%",
-    //     // padding: 5,
-    //     // marginVertical: 2,
-    //     // backgroundColor: "#ffc107",
-    //     // borderStyle: "solid",
-    //     // borderColor: "white",
-    //     // borderWidth: 1,
-    //     // borderRadius: 5
-
-    //     marginLeft: 120,
-    //     marginRight: 120,
-    //     padding: 5,
-    //     marginBottom: 5,
-    //     display: "flex",
-    //     backgroundColor: "#ffc107",
-    //     borderStyle: "solid",
-    //     borderColor: "white",
-    //     borderWidth: 1,
-    //     borderRadius: 5
-    // },
     labelButton: {
         fontWeight: "bold",
         textTransform: "uppercase",
@@ -173,5 +145,13 @@ const styles = StyleSheet.create({
     },
     icons: {
         color: '#ffffff'
+    },
+    footer: {
+        padding: 2,
+        backgroundColor: "#9ca3af",
+        borderStyle: "solid",
+        borderColor: "white",
+        borderWidth: 1,
+        borderRadius: 5
     }
 });

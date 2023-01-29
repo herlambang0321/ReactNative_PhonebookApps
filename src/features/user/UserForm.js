@@ -11,7 +11,8 @@ import { useDispatch } from 'react-redux'
 
 import {
     create,
-    searchUserData
+    searchUserData,
+    resetUserData
 } from './userSlice';
 
 export default function UserForm(props) {
@@ -36,13 +37,17 @@ export default function UserForm(props) {
         if (!props.fontlabel) {
             props.cancel()
         }
+    }
+
+    const handleReset = () => {
+        dispatch(resetUserData())
         setUser({ name: '', phone: '' })
     }
 
     return (
-        <View style={{}}>
+        <View style={{ display: 'flex', marginTop: -5 }}>
             <View>
-                <Text style={styles.title}><FontAwesomeIcon icon={props.fontlabel ? faUserCheck : faUserPlus} /> {props.fontlabel || 'Adding Form :'}</Text>
+                <Text style={[styles.title]}><FontAwesomeIcon icon={props.fontlabel ? faUserCheck : faUserPlus} /> {props.fontlabel || 'Adding Form :'}</Text>
             </View>
             <View style={{ display: "flex", width: "100%", flexDirection: "column", alignContent: "flex-start" }} onPress={props.fontlabel ? handleSearch : handleSubmit}>
                 <TextInput
@@ -76,7 +81,7 @@ export default function UserForm(props) {
                             </Text>
                         </TouchableOpacity>
                 }
-                <TouchableOpacity style={styles.submitCancel} onPress={handleCancel}>
+                <TouchableOpacity style={styles.submitCancel} onPress={props.fontlabel ? handleReset : handleCancel}>
                     <Text style={styles.labelButton}>
                         <View>
                             <FontAwesomeIcon style={[styles.icons, { transform: [{ rotate: '90deg' }] }]} icon={props.submitLabel ? faRotateLeft : faBan} />

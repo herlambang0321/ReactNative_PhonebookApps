@@ -25,7 +25,7 @@ export default function UserList(props) {
         <View style={{ display: "flex", width: "100%" }}>
             <FlatList
                 data={users}
-                initialNumToRender={7}
+                initialNumToRender={3}
                 renderItem={({ item, index }) => (
                     <UserItem
                         key={item.id}
@@ -38,7 +38,7 @@ export default function UserList(props) {
                 keyExtractor={(item) => item.id}
                 onEndReached={() => dispatch(loadmoreUser())}
                 onEndReachedThreshold={0.5}
-                style={{ maxHeight: 500 }}
+                style={{ maxHeight: 160 }}
             />
         </View>
     )

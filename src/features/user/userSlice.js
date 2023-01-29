@@ -90,6 +90,13 @@ export const userSlice = createSlice({
                 }),
                 params: action.payload.params
             }
+        },
+        resetUser: (state, action) => {
+            state.value.params = {
+                page: 1,
+                totalPage: 1,
+                query: {}
+            }
         }
     },
     extraReducers: (builder) => {
@@ -174,7 +181,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const { add, loadMore, searchUser } = userSlice.actions;
+export const { add, loadMore, searchUser, resetUser } = userSlice.actions;
 
 export const selectUser = (state) => state.user.value.data;
 
@@ -223,7 +230,11 @@ export const searchUserData = (query) => async (dispatch, getState) => {
     } catch (err) {
         dispatch(err)
     }
+};
 
+export const resetUserData = () => async (dispatch, getState) => {
+    dispatch(resetUser())
+    dispatch(loadUserAsync())
 };
 
 export default userSlice.reducer;
