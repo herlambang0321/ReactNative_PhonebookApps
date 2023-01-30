@@ -25,7 +25,7 @@ export default function UserList(props) {
         <View style={{ display: "flex", width: "100%" }}>
             <FlatList
                 data={users}
-                initialNumToRender={3}
+                initialNumToRender={7}
                 renderItem={({ item, index }) => (
                     <UserItem
                         key={item.id}
