@@ -45,9 +45,9 @@ export default function UserForm(props) {
     }
 
     return (
-        <View style={{ display: 'flex', marginTop: -5 }}>
+        <View style={styles.container}>
             <View>
-                <Text style={[styles.title]}><FontAwesomeIcon icon={props.fontlabel ? faUserCheck : faUserPlus} /> {props.fontlabel || 'Adding Form :'}</Text>
+                <Text style={styles.title}><FontAwesomeIcon icon={props.fontlabel ? faUserCheck : faUserPlus} /> {props.fontlabel || 'Adding Form :'}</Text>
             </View>
             <View style={{ display: "flex", width: "100%", flexDirection: "column", alignContent: "flex-start" }} onPress={props.fontlabel ? handleSearch : handleSubmit}>
                 <TextInput
@@ -105,6 +105,10 @@ export default function UserForm(props) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        marginTop: -5
+    },
     title: {
         textAlign: "center",
         marginVertical: 5,

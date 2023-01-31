@@ -9,8 +9,6 @@ import { Text, TouchableOpacity, StyleSheet, View, ImageBackground } from "react
 
 export default function UserBox(props) {
 
-    const image = { uri: 'https://cdn.wallpapersafari.com/18/86/OYuhta.jpg' };
-
     const [add, setAdd] = useState({
         showAdd: false,
     });
@@ -44,7 +42,7 @@ export default function UserBox(props) {
     }
 
     return (
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+        <ImageBackground source={require('../../../src/assets/image/OYuhta21.png')} resizeMode="cover" style={styles.image}>
             <View style={styles.container}>
                 <View>
                     <Text style={styles.title}>
@@ -82,7 +80,7 @@ export default function UserBox(props) {
                 </View>
             </View>
             <View style={styles.footer}>
-                <Text style={{ fontStyle: 'italic', fontWeight: '900', textAlign: "center", fontSize: 20, marginVertical: 10 }}>© Phone Book Apps</Text>
+                <Text style={{ fontStyle: 'italic', fontWeight: '900', textAlign: "center", fontSize: 20, marginVertical: 5 }}>© Phone Book Apps</Text>
             </View>
         </ImageBackground>
     )
@@ -93,13 +91,11 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
+        height: '100%'
     },
     container: {
         flex: 1,
         padding: 15,
-        paddingVertical: 10,
         width: "100%"
     },
     title: {
@@ -130,6 +126,7 @@ const styles = StyleSheet.create({
         display: "flex",
         marginLeft: "auto",
         marginBottom: 10,
+        marginVertical: 5,
         padding: 5,
         backgroundColor: "#0dcaf0",
         borderStyle: "solid",
@@ -147,11 +144,11 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     footer: {
-        padding: 2,
+        padding: 1,
+        width: "100%",
         backgroundColor: "#9ca3af",
         borderStyle: "solid",
         borderColor: "white",
-        borderWidth: 1,
-        borderRadius: 5
+        borderWidth: 1
     }
 });
