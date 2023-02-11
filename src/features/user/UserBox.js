@@ -75,7 +75,7 @@ export default function UserBox(props) {
                             </TouchableOpacity>
                     }
                 </View>
-                <View style={{ width: '100%', height: '100%', paddingVertical: 2 }}>
+                <View style={{ flex: 1, width: '100%', marginBottom: 0.2 }}>
                     <UserList />
                 </View>
             </View>
