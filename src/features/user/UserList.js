@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FlatList, ActivityIndicator, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 import UserItem from "../../components/UserItem"
 

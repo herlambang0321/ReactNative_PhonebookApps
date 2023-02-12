@@ -95,7 +95,9 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        padding: 15,
+        padding: 2,
+        paddingRight: 10,
+        paddingLeft: 10,
         width: "100%"
     },
     title: {
