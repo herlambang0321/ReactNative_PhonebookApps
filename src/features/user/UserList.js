@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 import UserItem from "../../components/UserItem"
 
@@ -22,7 +22,7 @@ export default function UserList(props) {
     }, [dispatch]);
 
     return (
-        <View style={{ ...StyleSheet.absoluteFill }}>
+        <View style={{ flex: 1 }}>
             <FlatList
                 data={users}
                 initialNumToRender={7}
@@ -38,7 +38,7 @@ export default function UserList(props) {
                 keyExtractor={(item) => item.id}
                 onEndReached={() => dispatch(loadmoreUser())}
                 onEndReachedThreshold={0.5}
-                style={{ maxHeight: 265 }}
+                style={{ maxHeight: 540 }}
             />
         </View>
     )
