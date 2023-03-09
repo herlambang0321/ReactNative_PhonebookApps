@@ -7,7 +7,7 @@ import { store } from './src/app/store';
 
 function App() {
   return (
-    < Provider store={store}>
+    <Provider store={store}>
       <UserBox />
     </Provider>
   )
