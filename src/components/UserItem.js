@@ -182,6 +182,13 @@ export default function UserItem(props) {
                             }}>
                             Are you sure, you want delete it?
                         </Text>
+                        <Text style={{
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            color: '#272727',
+                        }}>
+                            ` {user.name} `
+                        </Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
                             <TouchableOpacity
                                 style={{
